@@ -1,15 +1,17 @@
 :root {
   --dark: rgb(48, 65, 83);
   --custom-gray: #575366;
-  --custom-cyan: #6e7dab;
+  --custom-cyan: #b3bace;
   --custom-blue: rgb(46, 121, 190);
-  --light: #d1e3dd;
+  --light: #edf5f2;
+  --warning: #cf414d;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: var(--dark);
 }
 
 html {
@@ -19,7 +21,6 @@ html {
 body {
   position: relative;
   font-family: 'Verdana', 'Helvetica', sans-serif;
-  color: var(--dark);
   height: 100vh;
   padding: 0 4rem;
 }
@@ -28,6 +29,7 @@ body {
 header {
   position: relative;
   padding: 0.75rem 0;
+  margin-bottom: 8vh;
 }
 
 .header-wrapper {
@@ -55,23 +57,315 @@ header {
 }
 
 .btn-logout {
-  border: none;
-  border-radius: 15px;
-  background-color: var(--custom-blue);
-  color: white;
-
   font-size: 1.5rem;
   padding: 0.5rem 1.5rem;
+  border-radius: 15px;
+}
+
+/* BOTH LOGIN & SIGN-UP WINDOWS */
+.login-container,
+.sign-up-container {
+  position: relative;
+  background-color: var(--light);
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  min-width: 20rem;
+  max-width: 30vw;
+  margin: auto;
+  padding: 2rem;
+}
+
+.login-wrapper,
+.sign-up-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 17.5vw;
+}
+
+#login-title,
+#sign-up-title {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  margin-bottom: 1.5rem;
+}
+
+.login-wrapper div,
+.sign-up-wrapper div {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.btn-login-submit,
+.btn-sign-up-submit {
+  font-size: 1.25rem;
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
+}
+
+.login-container h3,
+.sign-up-container h3 {
+  font-size: 1rem;
+  margin: 2rem 0 0.75rem 0;
+}
+
+.btn-create-new-account,
+.btn-back-to-main-page {
+  background: none;
+  color: var(--custom-blue);
+  border: none;
   cursor: pointer;
+  font-size: 1rem;
+
   transition: all 0.3s;
 }
 
-.btn-logout:hover {
+.btn-create-new-account:hover,
+.btn-back-to-main-page:hover {
+  color: var(--custom-cyan);
+}
+
+/* SIGN-UP SUCCESSFUL MODAL */
+.sign-up-modal-wrapper {
+  background-color: var(--light);
+  border-radius: 15px;
+
+  position: absolute;
+  z-index: 10;
+  min-width: 16rem;
+  padding: 1.2rem 2rem;
+  top: 30%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sign-up-modal-wrapper div {
+  padding: 1.5rem;
+}
+
+.sign-up-modal-title {
+  font-size: 1.25rem;
+  font-weight: bolder;
+}
+
+#generated-login-label {
+  font-weight: bolder;
+  color: var(--custom-cyan);
+}
+
+.btn-sign-in {
+  font-size: 1.25rem;
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
+}
+
+/* //////////////////
+// MAIN APP WINDOW //
+///////////////////*/
+.app-container {
+  background-color: var(--light);
+  border-radius: 20px;
+  min-width: 50rem;
+  max-width: 60vw;
+  margin: auto;
+  padding: 1.5rem 3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TOP BAR */
+.top-bar-wrapper {
+  position: relative;
+  margin-bottom: 3rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-bar-wrapper div {
+  padding: 0 1rem;
+}
+
+.income-spending-bar {
+  width: 17.5rem;
+}
+
+.types-list-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.types-list-wrapper label {
+  margin-right: 0.25rem;
+}
+
+.income-spending-types-list {
+  font-size: 1rem;
+  padding: 0.25rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.income-spending-types-list:focus {
+  outline: none;
+}
+
+.amount-bar {
+  width: 6rem;
+}
+
+.btn-income-spending {
+  font-size: 1.25rem;
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
+  margin: 0 1rem;
+}
+
+/* INCOME & SPENDINGS CONTAINER */
+.lists-containers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.incomes-container,
+.spendings-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 0 2rem;
+  min-width: 20rem;
+  min-height: 20vh;
+  width: 25vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+}
+
+#incomes-title,
+#spendings-title {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
+
+.income-wrapper,
+.spending-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  width: 55%;
+}
+
+.right-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  margin-right: 0.75rem;
+  font-weight: bolder;
+  font-size: 1rem;
+  color: var(--custom-cyan);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  color: var(--custom-blue);
+}
+
+/* WARNINGS */
+.warning {
+  position: absolute;
+  background-color: var(--warning);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  left: 102.5%;
+}
+
+/* OVERALL LAYOUTS  */
+::placeholder {
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.btn {
+  border: none;
+  background-color: var(--custom-blue);
+  color: white;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.btn:hover {
   background-color: var(--custom-gray);
-  padding: 1rem 1.5rem;
+  border-radius: 0;
+}
+
+.input-bar {
+  border: 2px solid var(--custom-cyan);
+  border-radius: 10px;
+  padding: 0.25rem;
+  font-size: 1.2rem;
+
+  transition: all 0.3s;
+}
+
+.input-bar:focus {
+  outline: none;
+  border: 2px solid var(--custom-blue);
+}
+
+.overlay {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
 }
 
 /* FOR HIDING OTHER CLASSES */
-hidden {
-  visibility: hidden;
+.hidden {
+  display: none;
 }
