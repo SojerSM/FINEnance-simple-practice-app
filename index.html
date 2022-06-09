@@ -9,170 +9,203 @@
     <title>FINEnance</title>
   </head>
   <body>
-    <!-- HEADER BAR -->
-    <header>
-      <div class="welcome-wrapper hidden">
-        <p class="welcome-message">Welcome back, user!</p>
-        <p class="date-message">It's Wednesday, 18:33</p>
-      </div>
-      <img src="assets/banner.png" alt="banner.png" class="banner-img" />
-      <button class="btn-logout hidden">Log out</button>
-    </header>
-
-    <!-- SIGN IN WINDOW -->
-    <section class="login-container">
-      <p id="login-title">Sign in</p>
-      <form class="login-wrapper">
-        <div>
-          <input
-            type="text"
-            placeholder="Username"
-            class="input-bar login-user"
-          />
-          <p class="warning login-username-warning">Warning!</p>
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            class="input-bar login-password"
-          />
-          <p class="warning login-password-warning">Warning!</p>
-        </div>
-        <button class="btn btn-login-submit">Submit</button>
-      </form>
-      <p>Or</p>
-      <button class="btn-create-new-account">Create new account</button>
-    </section>
-
-    <!-- SIGN UP WINDOW-->
-    <section class="sign-up-container hidden">
-      <p id="sign-up-title">Sign up</p>
-      <form class="sign-up-wrapper">
-        <div>
-          <input
-            type="text"
-            placeholder="First name"
-            class="input-bar sign-up--name"
-          />
-          <p class="warning sign-up-name-warning">Warning!</p>
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Bitrth year"
-            maxlength="4"
-            class="input-bar sign-up--birth-year"
-          />
-          <p class="warning sign-up-birth-year-warning">Warning!</p>
-        </div>
-        <input
-          type="password"
-          placeholder="Password"
-          class="input-bar sign-up--password"
-        />
-        <div>
-          <input
-            type="password"
-            placeholder="Repeat password"
-            class="input-bar sign-up--password-repeated"
-          />
-          <p class="warning sign-up-password-repeated-warning">Warning!</p>
-        </div>
-      </form>
-      <button class="btn-back-to-main-page">Back to main page</button>
-    </section>
-
-    <!-- SIGN UP SUCCESFULL MODAL -->
-    <section class="sign-up-modal-wrapper hidden">
-      <p class="sign-up-modal-title">Sign up successful</p>
-      <p>
-        Use this as your login: <span id="generated-login-label">Login</span>
-      </p>
-      <button class="btn btn-sign-in">Sign in</button>
-    </section>
-
-    <!-- MAIN APP WINDOW -->
-    <main class="app-container hidden">
-      <!-- Add income/spending bar -->
-      <div class="top-bar-wrapper">
-        <input
-          type="text"
-          placeholder="Input income or spending"
-          class="income-spending-bar"
-        />
-        <label for="income-spending-types-list">Type:</label>
-        <select class="income-spending-types-list">
-          <option class="type-salary">Salary</option>
-          <option class="type-interest">Interest</option>
-          <option class="type-fixed">Fixed expenses</option>
-          <option class="type-irregular">Irregular expenses</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Amount"
-          class="amount-bar amount-input"
-        />
-        <button class="btn-income-spending-submit">Submit</button>
-        <p class="warning income-spending-warning">Warning!</p>
-      </div>
-
-      <!-- Incomes & spendings container-->
-      <div class="lists-containers">
-        <!-- List of incomes -->
-        <div class="incomes-container">
-          <div class="income-wrapper">
-            <button class="btn-delete">x</button>
-            <p class="income-name">Income example</p>
-            <p class="income-type">Salary</p>
-            <p class="income-amount">1000$</p>
-            <p class="income-percentage">20%</p>
+    <div class="overlay hidden"></div>
+    <main>
+      <!-- HEADER BAR -->
+      <header>
+        <div class="header-wrapper">
+          <div class="welcome-wrapper">
+            <p class="welcome-message">
+              Welcome, <span id="welcome-user">user!</span>
+            </p>
+            <p class="date-message">It's Wednesday, 18:33</p>
           </div>
+          <button class="btn btn-logout">Log out</button>
         </div>
+        <!-- Banner image always in the same position -->
+        <img src="assets/banner.png" alt="banner.png" id="banner-img" />
+      </header>
 
-        <!-- List of spendings -->
-        <div class="spendings-container">
-          <div class="spending-wrapper">
-            <button class="btn-delete">x</button>
-            <p class="spending-name">Spending example</p>
-            <p class="spending-type">Fixed expenses</p>
-            <p class="spending-amount">1000$</p>
-            <p class="spending-percentage">20%</p>
+      <!-- SIGN IN WINDOW -->
+      <section class="login-container hidden">
+        <p id="login-title">Sign in</p>
+        <form class="login-wrapper">
+          <div>
+            <input
+              type="text"
+              placeholder="Username"
+              class="input-bar login-user"
+            />
+            <p class="warning login-username-warning hidden">Warning!</p>
           </div>
-        </div>
-      </div>
-
-      <!-- Sort & clear all buttons -->
-      <div class="butons-bar">
-        <button class="btn btn-sort-lists">Sort</button>
-        <button class="btn btn-clear-all">Clear all</button>
-      </div>
-
-      <!-- Savings % bar -->
-      <div class="savings-percentage-bar">
-        <p>How much do you want to save:</p>
-        <form class="input-savings-wrapper">
-          <input type="text" placeholder="Percentage" class="input-savings" />
-          <label for="input-savings">%</label>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              class="input-bar login-password"
+            />
+            <p class="warning login-password-warning hidden">Warning!</p>
+          </div>
+          <button class="btn btn-login-submit">Submit</button>
         </form>
-        <button class="btn btn-savings-submit">Submit</button>
-        <p class="warning savings-bar-warning">Warning!</p>
-      </div>
+        <h3>or</h3>
+        <button class="btn-create-new-account">Create new account</button>
+      </section>
 
-      <!-- Summary -->
-      <div class="summary-container">
-        <div class="summary-top-wrapper">
-          <p>Incomes value: <span id="total-incomes">1000$</span></p>
-          <p>Spendings value: <span id="total-spendings">800$</span></p>
-          <p>Summary: <span id="summary-amount">200$</span></p>
+      <!-- SIGN UP WINDOW-->
+      <section class="sign-up-container hidden">
+        <p id="sign-up-title">Sign up</p>
+        <form class="sign-up-wrapper">
+          <div>
+            <input
+              type="text"
+              placeholder="First name"
+              class="input-bar sign-up--name"
+            />
+            <p class="warning sign-up-name-warning hidden">Warning!</p>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Bitrth year"
+              maxlength="4"
+              class="input-bar sign-up--birth-year"
+            />
+            <p class="warning sign-up-birth-year-warning hidden">Warning!</p>
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Password (min. 8 characters)"
+              class="input-bar sign-up--password"
+            />
+            <p class="warning sign-up-password-warning hidden">Warning!</p>
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Repeat password"
+              class="input-bar sign-up--password-repeated"
+            />
+            <p class="warning sign-up-password-repeated-warning hidden">
+              Warning!
+            </p>
+          </div>
+          <button class="btn btn-sign-up-submit">Submit</button>
+        </form>
+        <h3>or</h3>
+        <button class="btn-back-to-main-page">Back to main page</button>
+
+        <!-- SIGN UP SUCCESSFUL MODAL -->
+        <div class="sign-up-modal-wrapper hidden">
+          <p class="sign-up-modal-title">Sign up successful</p>
+          <div>
+            <p>
+              Get access with: <span id="generated-login-label">Login</span>
+            </p>
+            <p>and the password you choosed.</p>
+          </div>
+          <button class="btn btn-sign-in">Sign in</button>
         </div>
-        <div class="summary-bottom-container">
-          <p class="random-hint-first">Hint 1</p>
-          <p class="random-hint-second">Hint 2</p>
-          <p class="random-hint-third">Hint 3</p>
+      </section>
+
+      <!-- MAIN APP WINDOW -->
+      <section class="app-container">
+        <!-- Add income/spending bar -->
+        <form class="top-bar-wrapper">
+          <div>
+            <input
+              type="text"
+              maxlength="20"
+              placeholder="Input income or spending"
+              class="input-bar income-spending-bar"
+            />
+          </div>
+          <div class="types-list-wrapper">
+            <label for="income-spending-types-label">Type:</label>
+            <select class="income-spending-types-list">
+              <option class="type-salary">Salary</option>
+              <option class="type-interest">Interest</option>
+              <option class="type-fixed">Fixed expenses</option>
+              <option class="type-irregular">Irregular expenses</option>
+            </select>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Amount ($)"
+              class="input-bar amount-bar"
+            />
+          </div>
+          <button class="btn btn-income-spending">Add</button>
+          <p class="warning income-spending-warning hidden">Warning!</p>
+        </form>
+
+        <!-- Incomes & spendings container-->
+        <div class="lists-containers">
+          <!-- List of incomes -->
+          <div class="incomes-container">
+            <p id="incomes-title">Incomes</p>
+            <div class="income-wrapper">
+              <div class="left-column">
+                <button class="btn-delete">✖</button>
+                <p class="income-name">Income example</p>
+              </div>
+              <div class="right-column">
+                <p class="income-type">Salary</p>
+                <p class="income-amount">1000$</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- List of spendings -->
+          <div class="spendings-container">
+            <p id="spendings-title">Spendings</p>
+            <div class="spending-wrapper">
+              <div class="left-column">
+                <button class="btn-delete">✖</button>
+                <p class="spending-name">Spending example</p>
+              </div>
+              <div class="right-column">
+                <p class="spending-type">Fixed expenses</p>
+                <p class="spending-amount">1000$</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+
+        <!-- Sort & clear all buttons -->
+        <div class="butons-bar">
+          <button class="btn btn-sort-lists">Sort</button>
+          <button class="btn btn-clear-all">Clear all</button>
+        </div>
+
+        <!-- Savings % bar -->
+        <div class="savings-percentage-bar">
+          <p>How much do you want to save:</p>
+          <form class="input-savings-wrapper">
+            <input type="text" placeholder="Percentage" class="input-savings" />
+            <label for="input-savings">%</label>
+          </form>
+          <button class="btn btn-savings-submit">Submit</button>
+          <p class="warning savings-bar-warning">Warning!</p>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary-container">
+          <div class="summary-top-wrapper">
+            <p>Incomes value: <span id="total-incomes">1000$</span></p>
+            <p>Spendings value: <span id="total-spendings">800$</span></p>
+            <p>Summary: <span id="summary-amount">200$</span></p>
+          </div>
+          <div class="summary-bottom-container">
+            <p class="random-hint-first">Hint 1</p>
+            <p class="random-hint-second">Hint 2</p>
+            <p class="random-hint-third">Hint 3</p>
+          </div>
+        </div>
+      </section>
+      <script src="script.js"></script>
     </main>
-    <script src="script.js"></script>
   </body>
 </html>
