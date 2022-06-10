@@ -52,7 +52,7 @@ const checkSignUpName = function (name) {
   let regExp = /^[A-Za-z\s]*$/;
   let temp = inputSignUpName.value;
   if (regExp.test(temp)) {
-    name = temp;
+    name = temp.trim();
     warnSignUpName.classList.add('hidden');
   } else {
     warnSignUpName.classList.remove('hidden');
@@ -141,7 +141,7 @@ btnSignUp.addEventListener('click', e => {
     console.log(document.querySelector('.sign-up-password').value);
   } else {
     warnSignUpSubmit.classList.add('hidden');
-    name = checkSignUpName(name).trim();
+    name = checkSignUpName(name);
     year = checkSignUpYear(year);
     pass = checkSignUpPassword(pass);
     passRep = comparePasswords(pass, inputSignUpPassRep.value);
