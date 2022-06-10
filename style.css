@@ -115,7 +115,7 @@ header {
 .login-container h3,
 .sign-up-container h3 {
   font-size: 1rem;
-  margin: 2rem 0 0.75rem 0;
+  margin: 1.25rem 0 0.75rem 0;
 }
 
 .btn-create-new-account,
@@ -253,7 +253,7 @@ header {
   margin: 0 2rem;
   min-width: 20rem;
   min-height: 20vh;
-  width: 25vw;
+  width: 22.5vw;
 
   display: flex;
   flex-direction: column;
@@ -273,8 +273,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   margin-bottom: 0.5rem;
 }
 
@@ -308,6 +307,89 @@ header {
   color: var(--custom-blue);
 }
 
+/* SORT & CLEAR ALL BUTTONS */
+.buttons-bar {
+  margin: 1rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-sort-lists,
+.btn-clear-all {
+  background: none;
+  color: var(--custom-blue);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+
+  transition: all 0.3s;
+}
+
+.btn-sort-lists:hover,
+.btn-clear-all:hover {
+  color: var(--custom-cyan);
+}
+
+/* SAVINGS % BAR */
+.savings-percentage-bar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.savings-percentage-bar > * {
+  padding-right: 2rem;
+}
+
+.savings-percentage-bar div {
+  display: inline-flex;
+  align-items: center;
+}
+
+.input-savings {
+  width: 6rem;
+  margin-left: 0.5rem;
+}
+
+.btn-savings-submit {
+  font-size: 1.25rem;
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
+}
+
+/* SUMMARY */
+.summary-container {
+  background-color: white;
+  border-radius: 15px;
+  min-width: 40rem;
+  width: 42.5vw;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-top-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0.5rem 3.5rem 1.5rem 3.5rem;
+}
+
+.summary-top-wrapper span {
+  color: var(--custom-blue);
+  font-weight: bolder;
+}
+
+#total-spendings {
+  color: var(--warning);
+}
+
 /* WARNINGS */
 .warning {
   position: absolute;
@@ -317,6 +399,7 @@ header {
   border-radius: 10px;
   font-size: 0.85rem;
   left: 102.5%;
+  width: fit-content;
 }
 
 /* OVERALL LAYOUTS  */
@@ -365,7 +448,7 @@ header {
   backdrop-filter: blur(5px);
 }
 
-/* FOR HIDING OTHER CLASSES */
+/* HIDING ELEMENTS */
 .hidden {
   display: none;
 }
