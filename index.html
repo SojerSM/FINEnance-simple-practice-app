@@ -14,20 +14,20 @@
       <!-- HEADER BAR -->
       <header>
         <div class="header-wrapper">
-          <div class="welcome-wrapper">
+          <div class="welcome-wrapper hidden">
             <p class="welcome-message">
               Welcome, <span id="welcome-user">user!</span>
             </p>
             <p class="date-message">It's Wednesday, 18:33</p>
           </div>
-          <button class="btn btn-logout">Log out</button>
+          <button class="btn btn-logout hidden">Log out</button>
         </div>
         <!-- Banner image always in the same position -->
         <img src="assets/banner.png" alt="banner.png" id="banner-img" />
       </header>
 
       <!-- SIGN IN WINDOW -->
-      <section class="login-container hidden">
+      <section class="login-container">
         <p id="login-title">Sign in</p>
         <form class="login-wrapper">
           <div>
@@ -55,12 +55,13 @@
       <!-- SIGN UP WINDOW-->
       <section class="sign-up-container hidden">
         <p id="sign-up-title">Sign up</p>
-        <form class="sign-up-wrapper">
+        <div class="sign-up-wrapper">
           <div>
             <input
               type="text"
               placeholder="First name"
-              class="input-bar sign-up--name"
+              maxlength="24"
+              class="input-bar sign-up-name"
             />
             <p class="warning sign-up-name-warning hidden">Warning!</p>
           </div>
@@ -69,7 +70,7 @@
               type="text"
               placeholder="Bitrth year"
               maxlength="4"
-              class="input-bar sign-up--birth-year"
+              class="input-bar sign-up-birth-year"
             />
             <p class="warning sign-up-birth-year-warning hidden">Warning!</p>
           </div>
@@ -77,7 +78,7 @@
             <input
               type="password"
               placeholder="Password (min. 8 characters)"
-              class="input-bar sign-up--password"
+              class="input-bar sign-up-password"
             />
             <p class="warning sign-up-password-warning hidden">Warning!</p>
           </div>
@@ -85,14 +86,15 @@
             <input
               type="password"
               placeholder="Repeat password"
-              class="input-bar sign-up--password-repeated"
+              class="input-bar sign-up-password-rep"
             />
-            <p class="warning sign-up-password-repeated-warning hidden">
-              Warning!
-            </p>
+            <p class="warning sign-up-password-rep-warning hidden">Warning!</p>
           </div>
-          <button class="btn btn-sign-up-submit">Submit</button>
-        </form>
+          <div>
+            <button class="btn btn-sign-up-submit">Submit</button>
+            <p class="warning sign-up-submit-warning hidden">Warning!</p>
+          </div>
+        </div>
         <h3>or</h3>
         <button class="btn-back-to-main-page">Back to main page</button>
 
@@ -100,9 +102,7 @@
         <div class="sign-up-modal-wrapper hidden">
           <p class="sign-up-modal-title">Sign up successful</p>
           <div>
-            <p>
-              Get access with: <span id="generated-login-label">Login</span>
-            </p>
+            <p>Get access with: <span id="generated-login-label"></span></p>
             <p>and the password you choosed.</p>
           </div>
           <button class="btn btn-sign-in">Sign in</button>
@@ -110,7 +110,7 @@
       </section>
 
       <!-- MAIN APP WINDOW -->
-      <section class="app-container">
+      <section class="app-container hidden">
         <!-- Add income/spending bar -->
         <form class="top-bar-wrapper">
           <div>
@@ -175,27 +175,34 @@
         </div>
 
         <!-- Sort & clear all buttons -->
-        <div class="butons-bar">
-          <button class="btn btn-sort-lists">Sort</button>
-          <button class="btn btn-clear-all">Clear all</button>
+        <div class="buttons-bar">
+          <button class="btn-sort-lists">Sort</button>
+          <button class="btn-clear-all">Clear all</button>
         </div>
 
         <!-- Savings % bar -->
         <div class="savings-percentage-bar">
-          <p>How much do you want to save:</p>
-          <form class="input-savings-wrapper">
-            <input type="text" placeholder="Percentage" class="input-savings" />
-            <label for="input-savings">%</label>
-          </form>
+          <div>
+            <p>How much do you want to save:</p>
+            <form class="input-savings-wrapper">
+              <input
+                type="text"
+                maxlength="2"
+                placeholder="Percentage"
+                class="input-bar input-savings"
+              />
+              <label for="input-savings">%</label>
+            </form>
+          </div>
           <button class="btn btn-savings-submit">Submit</button>
-          <p class="warning savings-bar-warning">Warning!</p>
+          <p class="warning savings-bar-warning hidden">Warning!</p>
         </div>
 
         <!-- Summary -->
         <div class="summary-container">
           <div class="summary-top-wrapper">
-            <p>Incomes value: <span id="total-incomes">1000$</span></p>
-            <p>Spendings value: <span id="total-spendings">800$</span></p>
+            <p>Incomes: <span id="total-incomes">1000$</span></p>
+            <p>Spendings: <span id="total-spendings">800$</span></p>
             <p>Summary: <span id="summary-amount">200$</span></p>
           </div>
           <div class="summary-bottom-container">
