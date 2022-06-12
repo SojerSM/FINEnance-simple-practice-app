@@ -18,7 +18,7 @@
             <p class="welcome-message">
               Welcome, <span id="welcome-user">user!</span>
             </p>
-            <p class="date-message">It's Wednesday, 18:33</p>
+            <p>It's <span id="date-message">Wednesday, 18:33</span></p>
           </div>
           <button class="btn btn-logout hidden">Log out</button>
         </div>
@@ -46,7 +46,10 @@
             />
             <p class="warning login-password-warning hidden">Warning!</p>
           </div>
-          <button class="btn btn-login-submit">Submit</button>
+          <div>
+            <button class="btn btn-login-submit">Submit</button>
+            <p class="warning login-submit-warning hidden">Warning!</p>
+          </div>
         </form>
         <h3>or</h3>
         <button class="btn-create-new-account">Create new account</button>
@@ -126,8 +129,8 @@
             <select class="income-spending-types-list">
               <option class="type-salary">Salary</option>
               <option class="type-interest">Interest</option>
-              <option class="type-fixed">Fixed expenses</option>
-              <option class="type-irregular">Irregular expenses</option>
+              <option class="type-fixed">Fixed</option>
+              <option class="type-irregular">Irregular</option>
             </select>
           </div>
           <div>
@@ -148,12 +151,11 @@
             <p id="incomes-title">Incomes</p>
             <div class="income-wrapper">
               <div class="left-column">
-                <button class="btn-delete">✖</button>
-                <p class="income-name">Income example</p>
+                <p class="income-name"></p>
               </div>
               <div class="right-column">
-                <p class="income-type">Salary</p>
-                <p class="income-amount">1000$</p>
+                <p class="income-type"></p>
+                <p class="income-amount"></p>
               </div>
             </div>
           </div>
@@ -163,12 +165,11 @@
             <p id="spendings-title">Spendings</p>
             <div class="spending-wrapper">
               <div class="left-column">
-                <button class="btn-delete">✖</button>
-                <p class="spending-name">Spending example</p>
+                <p class="spending-name"></p>
               </div>
               <div class="right-column">
-                <p class="spending-type">Fixed expenses</p>
-                <p class="spending-amount">1000$</p>
+                <p class="spending-type"></p>
+                <p class="spending-amount"></p>
               </div>
             </div>
           </div>
@@ -187,8 +188,8 @@
             <form class="input-savings-wrapper">
               <input
                 type="text"
-                maxlength="2"
-                placeholder="Percentage"
+                maxlength="3"
+                placeholder="Number (1-100)"
                 class="input-bar input-savings"
               />
               <label for="input-savings">%</label>
