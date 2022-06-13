@@ -273,7 +273,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
 
@@ -374,11 +374,22 @@ header {
   flex-direction: column;
 }
 
+.summary-bottom-container {
+  border-radius: 15px;
+  padding: 1rem 3rem;
+}
+
+#hint-first,
+#hint-second {
+  color: white;
+  text-align: justify;
+}
+
 .summary-top-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 0.5rem 3.5rem 1.5rem 3.5rem;
+  margin: 1rem 3.5rem 2rem 5rem;
 }
 
 .summary-top-wrapper span {
@@ -388,6 +399,14 @@ header {
 
 #total-spendings {
   color: var(--warning);
+}
+
+/* FOOTER */
+#footer-text {
+  text-align: center;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  margin: 2.5rem 0;
 }
 
 /* WARNINGS */
