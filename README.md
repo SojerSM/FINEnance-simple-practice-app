@@ -9,3 +9,5 @@ What this project contains:
   - main functionality, which is an ability to adding incomes or spendings to the user object arrays and displaying those depending on the type, as well as adding html element to the proper container
   - sorting and clearing both lists
   - determining the percentage level of expected savings and displaying hints based on positive or negative calculation result
+
+https://extraordinary-duckanoo-793a65.netlify.app/ 
