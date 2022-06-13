@@ -9,6 +9,8 @@ const labelDateMessage = document.getElementById('date-message');
 const labelTotalIncome = document.getElementById('total-incomes');
 const labelTotalSpending = document.getElementById('total-spendings');
 const labelSummary = document.getElementById('summary-amount');
+const labelHintFirst = document.getElementById('hint-first');
+const labelHintSecond = document.getElementById('hint-second');
 
 const btnNewAccount = document.querySelector('.btn-create-new-account');
 const btnMainPage = document.querySelector('.btn-back-to-main-page');
@@ -29,6 +31,7 @@ const overlay = document.querySelector('.overlay');
 const wrapperWelcome = document.querySelector('.welcome-wrapper');
 const containerIncomes = document.querySelector('.incomes-container');
 const containerSpendings = document.querySelector('.spendings-container');
+const containerSummary = document.querySelector('.summary-bottom-container');
 
 const inputSignUpName = document.querySelector('.sign-up-name');
 const inputSignUpYear = document.querySelector('.sign-up-birth-year');
@@ -57,18 +60,7 @@ const warnSavings = document.querySelector('.savings-bar-warning');
 //////////////
 /* INITIALS */
 //////////////
-const accounts = [
-  {
-    firstName: 'sebastian',
-    username: 'seb96dx',
-    birthYear: 1996,
-    password: 'margonem',
-    incomes: [],
-    spendings: [],
-    totalIncome: 0,
-    totalSpending: 0,
-  },
-];
+let accounts = [];
 let currentAccount, summary;
 
 ///////////////
@@ -101,7 +93,11 @@ const clearLoginInputs = function () {
 const clearAddBarInputs = function () {
   inputDesignation.value = '';
   selectTypesList.value = '';
-  inputDesignation.value = '';
+  inputAmount.value = '';
+};
+
+const clearAllHints = function () {
+  containerSummary.classList.add('hidden');
 };
 
 const clearSignUpWarnings = function () {
@@ -122,6 +118,22 @@ const displaySignUpModal = function (username) {
   labelRandLogin.textContent = username;
 };
 
+const displayHints = function (amount, isLower) {
+  containerSummary.classList.remove('hidden');
+  labelHintFirst.textContent = `The amount of money you want to save is ${
+    isLower ? 'lower' : 'higher'
+  } than the actual remaining and equals ${Math.round(amount)}$.`;
+  if (isLower) {
+    containerSummary.style.background = 'var(--custom-blue)';
+    labelHintSecond.textContent = `You can even save up to ${Math.round(
+      (summary / currentAccount.totalIncome) * 100
+    )}% of your income based on current spendings level.`;
+  } else {
+    containerSummary.style.background = 'var(--warning)';
+    labelHintSecond.textContent = `It might be a good idea to give up some of irregular spendings or looking for another source of income in order to achieving your goal.`;
+  }
+};
+
 const updateUserData = function (account) {
   let [first, ...others] = account.firstName;
   labelUserWelcome.textContent = first.toUpperCase().concat(...others);
@@ -133,6 +145,8 @@ const updateSummary = function (account) {
   labelTotalIncome.textContent = account.totalIncome + '$';
   labelTotalSpending.textContent = account.totalSpending + '$';
   labelSummary.textContent = account.totalIncome - account.totalSpending + '$';
+  updateIncomes();
+  updateSpendings();
 };
 
 const getFormatedDate = function () {
@@ -216,6 +230,7 @@ const checkLoginData = function (id) {
     if (currentAccount.password === inputLoginPass.value) {
       toggleAppWindow();
       updateUserData(currentAccount);
+      clearAllHints();
     } else {
       warnLoginPass.classList.remove('hidden');
       warnLoginPass.textContent = 'Incorrect password';
@@ -407,7 +422,9 @@ btnClearAll.addEventListener('click', e => {
   updateIncomes();
   updateSpendings();
   clearAddBarInputs();
-  updateSummary(currentAccount);
+  labelTotalIncome.textContent = '0$';
+  labelTotalSpending.textContent = '0$';
+  labelSummary.textContent = '0$';
 });
 
 btnSavingsSubmit.addEventListener('click', e => {
@@ -416,6 +433,7 @@ btnSavingsSubmit.addEventListener('click', e => {
     warnSavings.classList.remove('hidden');
     warnSavings.textContent = 'Complete the form';
     inputSavings.value = '';
+    clearAllHints();
   } else {
     if (
       Number.isInteger(+inputSavings.value) &&
@@ -424,17 +442,13 @@ btnSavingsSubmit.addEventListener('click', e => {
     ) {
       warnSavings.classList.add('hidden');
       let amount = currentAccount.totalIncome * (inputSavings.value / 100);
-      console.log(amount);
-      if (compareSummaryAmount(amount)) {
-        console.log('Amount lower than actual savings');
-      } else {
-        console.log('Amount higher than actual savings');
-      }
-      console.log('Proper number');
+      displayHints(amount, compareSummaryAmount(amount));
     } else {
       warnSavings.classList.remove('hidden');
       warnSavings.textContent = 'Must be an integer in range of 1-100';
       inputSavings.value = '';
+      clearAllHints();
     }
   }
+  inputSavings.value = '';
 });
