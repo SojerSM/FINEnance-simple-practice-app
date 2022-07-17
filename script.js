@@ -277,6 +277,7 @@ const updateSpendings = function (sort = false) {
   });
 };
 
+//New sort
 let sorted = false;
 btnSort.addEventListener('click', e => {
   e.preventDefault();
