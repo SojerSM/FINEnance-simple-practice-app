@@ -280,12 +280,6 @@ const updateSpendings = function (sort = false) {
 let sorted = false;
 btnSort.addEventListener('click', e => {
   e.preventDefault();
-  // currentAccount.incomes.sort((a, b) => {
-  //   return b.amount - a.amount;
-  // });
-  // currentAccount.spendings.sort((a, b) => {
-  //   return b.amount - a.amount;
-  // });
   updateIncomes(!sorted);
   updateSpendings(!sorted);
   sorted = !sorted;
