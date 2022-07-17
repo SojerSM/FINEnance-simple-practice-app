@@ -239,9 +239,12 @@ const checkLoginData = function (id) {
   }
 };
 
-const updateIncomes = function () {
+const updateIncomes = function (sort = false) {
+  const currentAccountIncomes = sort
+    ? currentAccount.incomes.slice().sort((a, b) => b.amount - a.amount)
+    : currentAccount.incomes;
   containerIncomes.innerHTML = '<p id="incomes-title">Incomes</p>';
-  currentAccount.incomes.forEach((income, id) => {
+  currentAccountIncomes.forEach((income, id) => {
     const htmlEl = `<div class="income-wrapper">
     <div class="left-column">
       <p class="income-name">${income.designation}</p>
@@ -255,9 +258,12 @@ const updateIncomes = function () {
   });
 };
 
-const updateSpendings = function () {
+const updateSpendings = function (sort = false) {
+  const currentAccountSpending = sort
+    ? currentAccount.spendings.slice().sort((a, b) => b.amount - a.amount)
+    : currentAccount.spendings;
   containerSpendings.innerHTML = '<p id="spendings-title">Spendings</p>';
-  currentAccount.spendings.forEach((spending, id) => {
+  currentAccountSpending.forEach((spending, id) => {
     const htmlEl = `<div class="spending-wrapper">
     <div class="left-column">
       <p class="spending-name">${spending.designation}</p>
@@ -270,6 +276,16 @@ const updateSpendings = function () {
     containerSpendings.insertAdjacentHTML('beforeend', htmlEl);
   });
 };
+
+//New sort
+let sorted = false;
+btnSort.addEventListener('click', e => {
+  e.preventDefault();
+  updateIncomes(!sorted);
+  updateSpendings(!sorted);
+  sorted = !sorted;
+  clearAddBarInputs();
+});
 
 const compareSummaryAmount = function (amount) {
   summary = currentAccount.totalIncome - currentAccount.totalSpending;
@@ -399,19 +415,6 @@ btnAdd.addEventListener('click', e => {
     }
   }
   updateSummary(currentAccount);
-  clearAddBarInputs();
-});
-
-btnSort.addEventListener('click', e => {
-  e.preventDefault();
-  currentAccount.incomes.sort((a, b) => {
-    return b.amount - a.amount;
-  });
-  currentAccount.spendings.sort((a, b) => {
-    return b.amount - a.amount;
-  });
-  updateIncomes();
-  updateSpendings();
   clearAddBarInputs();
 });
 
